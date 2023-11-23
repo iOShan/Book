@@ -556,17 +556,51 @@ window.onbeforeunload = function() {
 // start cookie
 // start cookie
 // start cookie
-window.onload = function() {
- alert("Welcome to the website!");
- setCookie("username", "John Doe", 30);
-};
-
-function setCookie(cname, cvalue, exdays) {
- var d = new Date();
- d.setTime(d.getTime() + (exdays*24*60*60*1000));
- var expires = "expires="+ d.toUTCString();
- document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+// Function to read a cookie by its name
+function readCookie(name) {
+ var nameEQ = name + "=";
+ var ca = document.cookie.split(';');
+ for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+ }
+ return null;
 }
+
+// Function to set a cookie
+function setCookie(name,value,days) {
+ var expires = "";
+ if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    expires = "; expires=" + date.toUTCString();
+ }
+ document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+// Function to delete a cookie
+function deleteCookie(name) {
+ setCookie(name, "", -1);
+}
+
+// Testing the functions
+console.log("Initial cookies:");
+console.log(document.cookie);
+
+console.log("Setting 'myCookie'...");
+setCookie("myCookie", "myValue", 1);
+
+console.log("New cookies:");
+console.log(document.cookie);
+
+console.log("Reading 'myCookie': " + readCookie("myCookie"));
+
+console.log("Deleting 'myCookie'...");
+deleteCookie("myCookie");
+
+console.log("Final cookies:");
+console.log(document.cookie);
 // end cookie
 // end cookie
 // end cookie
