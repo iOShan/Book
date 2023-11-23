@@ -543,11 +543,12 @@ footer{
 // start img slide
 // start img slide
 window.onload = function() {
-    if (document.cookie.indexOf("alerted=true") < 0) {
-      alert("Welcome to my website!");
-      document.cookie = "alerted=true; path=/";
-    }
- };
+ alert("Welcome to the website!");
+};
+
+window.onbeforeunload = function() {
+ return "You have not saved your changes. Do you want to leave this page?";
+};
 // end img slide
 // end img slide
 // end img slide
