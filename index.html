@@ -539,20 +539,37 @@ footer{
 // end ul li a headshake
 // end ul li a headshake
 
-// start img slide
-// start img slide
-// start img slide
+// start alret
+// start alret
+// start alret
 window.onload = function() {
- alert("Welcome to the website!");
+ alert("ငိၼ်းလီႁပ်ႉတွၼ်ႈယူႇၶႃႈဢေႃႈ!");
 };
 
 window.onbeforeunload = function() {
  return "You have not saved your changes. Do you want to leave this page?";
 };
-// end img slide
-// end img slide
-// end img slide
+// end alret
+// end alret
+// end alret
 
+// start cookie
+// start cookie
+// start cookie
+window.onload = function() {
+ alert("Welcome to the website!");
+ setCookie("username", "John Doe", 30);
+};
+
+function setCookie(cname, cvalue, exdays) {
+ var d = new Date();
+ d.setTime(d.getTime() + (exdays*24*60*60*1000));
+ var expires = "expires="+ d.toUTCString();
+ document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+// end cookie
+// end cookie
+// end cookie
     </script>
 
     
